@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <!--<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>-->
+    <title>learning</title>
+</head>
+<body>
+    <h2>家教薪資小幫手</h2>
+    <div>
+        <p>以下請輸入相關資料可以算處預測的薪資</p><br>
+        <span>place</span><select id="place">
+            <option>
+                新　北　市
+            </option>
+            <option>
+                臺　北　市
+            </option>
+            <option>
+                桃　園　市
+            </option>
+            <option>
+                臺　中　市
+            </option>
+            <option>
+                臺　南　市
+            </option>
+            <option>
+                高　雄　市
+            </option>
+            <option>
+                宜　蘭　縣
+            </option>
+            <option>
+                新　竹　縣
+            </option>
+            <option>
+                苗　栗　縣
+            </option>
+            <option>
+                彰　化　縣
+            </option>
+            <option>
+                南　投　縣
+            </option>
+            <option>
+                雲　林　縣
+            </option>
+            <option>
+                嘉　義　縣
+            </option>
+            <option>
+                屏　東　縣
+            </option>
+            <option>
+                臺　東　縣
+            </option>
+            <option>
+                花　蓮　縣
+            </option>
+            <option>
+                澎　湖　縣
+            </option>
+            <option>
+                基　隆　市
+            </option>
+            <option>
+                新　竹　市
+            </option>
+            <option>嘉　義　市</option>
+        </select>
+        <span>student_grade</span><select id="student_grade">
+            <option>
+                學齡前
+            </option>
+            <option>
+                幼稚園
+            </option>
+            <option>
+                小學一年級
+            </option>
+            <option>
+                小學二年級
+            </option>
+            <option>
+                小學三年級
+            </option>
+            <option>
+                小學四年級
+            </option>
+            <option>
+                小學五年級
+            </option>
+            <option>
+                小學六年級
+            </option>
+            <option>
+                國中一年級
+            </option>
+            <option>
+                國中二年級
+            </option>
+            <option>
+                國中三年級
+            </option>
+            <option>
+                高中一年級
+            </option>
+            <option>
+                高年二年級
+            </option>
+            <option>
+                高中三年級
+            </option>
+            <option>
+                大學
+            </option>
+            <option>社會人士</option>
+        </select>
+        <span>teacher_grade</span><select id="teacher_grade">
+            <option>
+                無
+            </option>
+            <option>
+                3個月
+            </option>
+            <option>
+                半年
+            </option>
+            <option>
+                一年
+            </option>
+            <option>
+                一年半
+            </option>
+            <option>
+                二年
+            </option>
+            <option>
+                三年
+            </option>
+            <option>
+                四年
+            </option>
+            <option>
+                五年
+            </option>
+            <option>
+                六年
+            </option>
+            <option>七年以上</option>
+        </select>
+        <input id="mode1_confirm" type="button" value="confirm" />
+    </div><br />
+    <div>
+        <input id="result" type="text" value="result" />
+    </div>
+    <script>
+        var dictionary = {
+            '學齡前': 1, '幼稚園': 1, '小學一年級': 1, '小學二年級': 2, '小學三年級': 3, '小學四年級': 4, '小學五年級': 5, '小學六年級': 6,
+            '國中一年級': 7, '國中二年級': 8, '國中三年級': 9, '高中一年級': 10, '高年二年級': 11, '高中三年級': 12, '大學': 12, '社會人士': 12,
+            '無': 0, '3個月': 0.25, '半年': 0.5, '一年': 1, '一年半': 1.5, '二年': 2, '三年': 3, '四年': 4, '五年': 5, '六年': 6, '七年以上': 7,
+            '新　北　市': 0.78, '臺　北　市': 1, '桃　園　市': 0.84, '臺　中　市': 0.78, '臺　南　市': 0.66, '高　雄　市': 0.74, '宜　蘭　縣': 0.65,
+            '新　竹　縣': 0.92, '苗　栗　縣': 0.63, '彰　化　縣': 0.6, '南　投　縣': 0.59, '雲　林　縣': 0.52, '嘉　義　縣': 0.57, '屏　東　縣': 0.6,
+            '臺　東　縣': 0.54, '花　蓮　縣': 0.57, '澎　湖　縣': 0.58, '基　隆　市': 0.65, '新　竹　市': 0.86, '嘉　義　市': 0.7,
+        };
+        function mode1_caculation(place, student, teacher) {
+            $("#result").val(dictionary[place] * 403 + dictionary[student] * 25 + dictionary[teacher] * 47 - 49);
+        }
+        $(document).ready(function () {
+            $("#mode1_confirm").click(function () {
+                mode1_caculation($("#place").val(), $("#student_grade").val(), $("#teacher_grade").val());
+            })
+        });
+    </script>
+</body>
+</html>
