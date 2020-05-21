@@ -6,150 +6,269 @@
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!--<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>-->
     <title>learning</title>
+    <style type="text/css">
+        h1 {
+            color: orange;
+            line-height: 0px;
+            margin-top:50px;
+            font-family: "DFKai-SB";
+        }
+        h4 {
+            color: red;
+        }
+        .buttum{
+            color:red;
+            width:120px;height:40px;
+            font-size:larger;
+            font-family:Microsoft JhengHei;
+        }
+        .subject{
+            background-color:mediumpurple;
+            width:45%;
+            font-size:large;
+        }
+        .result{
+            color:gray;
+            font-size:larger;
+            width:6%;
+        }
+        input{
+            background-color:yellow;
+            text-align:center;
+        }
+        select{
+            background-color:mediumpurple;
+            width:40%;
+            font-family:Microsoft JhengHei;
+            font-size:large;
+        }
+        option{
+            background-color:lightyellow;
+            font-family:Microsoft JhengHei;
+            font-size:large;
+        }
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #FFF;
+        }
+
+        .container {
+            margin: 0 auto;
+            display: flex;
+            flex-flow: row wrap;
+        }
+
+        .c1, .c2, .c3, .c4 {
+            width: 100%;
+            /*text-align:center;*/
+        }
+
+        @media (min-width: 200px) {
+            .c2, .c3, .c4 {
+                width: 100%;
+            }
+            .result{
+            font-size:medium;
+            width:30%;
+            }
+            table{
+                width: 50px;
+                table-layout:fixed;
+            }
+        }
+
+        @media (min-width: 600px) {
+            .c1 {
+                width: 20%;
+            }
+            .c2 {
+                width: 20%;
+            }
+            .c3, .c4 {
+                width: 20%;
+            }
+            .c5 {
+                text-align: center;
+                margin-right: 0%;
+            }
+            table{
+                width: 300px;
+                table-layout:fixed;
+            }
+            .result{
+            font-size:large;
+            width:9%;
+            }
+        }
+    </style>
 </head>
-<body>
-    <h2>家教薪資小幫手</h2>
-    <div>
-        <span>place</span><select id="place">
-            <option>
-                新北
-            </option>
-            <option>
-                臺北
-            </option>
-            <option>
-                桃園
-            </option>
-            <option>
-                臺中
-            </option>
-            <option>
-                臺南
-            </option>
-            <option>
-                高雄
-            </option>
-            <option>
-                宜蘭
-            </option>
-            <option>
-                新竹
-            </option>
-            <option>
-                苗栗
-            </option>
-            <option>
-                彰化
-            </option>
-            <option>
-                南投
-            </option>
-            <option>
-                雲林
-            </option>
-            <option>
-                嘉義
-            </option>
-            <option>
-                屏東
-            </option>
-            <option>
-                臺東
-            </option>
-            <option>
-                花蓮
-            </option>
-            <option>
-                澎湖
-            </option>
-            <option>
-                基隆
-            </option>
-            <option>
-                新竹
-            </option>
-            <option>嘉義</option>
-            <option>不限制</option>
-        </select>
-        <span>student_grade</span><select id="student_grade">
-            <option>學齡前</option>
-            <option>幼稚園</option>
-            <option>國小</option>
-            <option>小學一年級</option>
-            <option>小學二年級</option>
-            <option>小學三年級</option>
-            <option>小學四年級</option>
-            <option>小學五年級</option>
-            <option>小學六年級</option>
-            <option>國中</option>
-            <option>國中一年級</option>
-            <option>國中二年級</option>
-            <option>國中三年級</option>
-            <option>高中</option>
-            <option>高中一年級</option>
-            <option>高年二年級</option>
-            <option>高中三年級</option>
-            <option>大學</option>
-            <option>社會人士</option>
-            <option>學測</option>
-            <option>統測</option>
-            <option>不限制</option>
-        </select>
-        <span>teacher_grade</span><select id="teacher_grade">
-            <option>
-                無
-            </option>
-            <option>
-                3個月
-            </option>
-            <option>
-                半年
-            </option>
-            <option>
-                一年
-            </option>
-            <option>
-                一年半
-            </option>
-            <option>
-                二年
-            </option>
-            <option>
-                三年
-            </option>
-            <option>
-                四年
-            </option>
-            <option>
-                五年
-            </option>
-            <option>
-                六年
-            </option>
-            <option>七年以上</option>
-            <option>不限制</option>
-        </select>
-        <span>subject</span><input id="subject" type="text" value="物化" />
+<body style="font-weight:bold;font-family:Microsoft JhengHei;">
+    <h1>家教薪資小幫手<br /></h1>
+    <h4>選取符合個人狀況的選項以獲得家教鐘點費推算</h4>
+    <div class="container">
+        <div class="c1">
+            <span>家教地區</span><br />
+            <select id="place">
+                <option>
+                    新北
+                </option>
+                <option>
+                    臺北
+                </option>
+                <option>
+                    桃園
+                </option>
+                <option>
+                    臺中
+                </option>
+                <option>
+                    臺南
+                </option>
+                <option>
+                    高雄
+                </option>
+                <option>
+                    宜蘭
+                </option>
+                <option>
+                    新竹
+                </option>
+                <option>
+                    苗栗
+                </option>
+                <option>
+                    彰化
+                </option>
+                <option>
+                    南投
+                </option>
+                <option>
+                    雲林
+                </option>
+                <option>
+                    嘉義
+                </option>
+                <option>
+                    屏東
+                </option>
+                <option>
+                    臺東
+                </option>
+                <option>
+                    花蓮
+                </option>
+                <option>
+                    澎湖
+                </option>
+                <option>
+                    基隆
+                </option>
+                <option>
+                    新竹
+                </option>
+                <option>嘉義</option>
+                <option>不限制</option>
+            </select>
+        </div>
+        <div class="c1">
+            <span>教授學生年級</span><br />
+            <select id="student_grade">
+                <option>學齡前</option>
+                <option>幼稚園</option>
+                <option>國小</option>
+                <option>小學一年級</option>
+                <option>小學二年級</option>
+                <option>小學三年級</option>
+                <option>小學四年級</option>
+                <option>小學五年級</option>
+                <option>小學六年級</option>
+                <option>國中</option>
+                <option>國中一年級</option>
+                <option>國中二年級</option>
+                <option>國中三年級</option>
+                <option>高中</option>
+                <option>高中一年級</option>
+                <option>高年二年級</option>
+                <option>高中三年級</option>
+                <option>大學</option>
+                <option>社會人士</option>
+                <option>學測</option>
+                <option>統測</option>
+                <option>不限制</option>
+            </select>
+        </div>
+        <div class="c1">
+            <span>家教老師個人資歷</span><br />
+            <select id="teacher_grade">
+                <option>
+                    無
+                </option>
+                <option>
+                    3個月
+                </option>
+                <option>
+                    半年
+                </option>
+                <option>
+                    一年
+                </option>
+                <option>
+                    一年半
+                </option>
+                <option>
+                    二年
+                </option>
+                <option>
+                    三年
+                </option>
+                <option>
+                    四年
+                </option>
+                <option>
+                    五年
+                </option>
+                <option>
+                    六年
+                </option>
+                <option>七年以上</option>
+                <option>不限制</option>
+            </select>
+        </div>
+        <div class="c1">
+            <span>教授科目</span><br />
+            <input id="subject" type="text" value="物化" class="subject" />
+        </div>
         <br />
         <br />
-    </div>
-    <div>
-        <input id="confirm" type="button" value="confirm" />
     </div>
     <br />
-    <div id="warming">
+    <br />
+    <div class="c5">
+        <div>
+            <input id="confirm" type="button" value="點此計算" class="buttum"/>
+        </div>
+        <div>
+            <h3>你的家教鐘點費約為<input id="result" type="text" value="result" readonly="readonly" class="result"/>元</h3>
+        </div>
+        <br />
+        <div id="warming">
+        </div>
     </div>
     <div id="output">
-        <table style="width:100%;" border="1">
+        <!--<table style="width:100%;" border="1">
             <tr><td rowspan="6">時薪</td><td rowspan="4">x老師 <br /> x大學 x 系</td><td>個人資歷</td><td>教授科目</td><td>學生年級</td></tr>
             <tr><td>個人資歷</td><td>教授科目</td><td>學生年級</td></tr>
             <tr><td>家教地區</td><td>交通狀況</td><td>上課時數</td></tr>
             <tr><td>家教地區</td><td>交通狀況</td><td>上課時數</td></tr>
             <tr><td>學生程度</td><td colspan="3">學生程度</td></tr>
             <tr><td>家長期待</td><td colspan="3">家長期待</td></tr>
-        </table>
+        </table>-->
     </div>
     <script>
+        var datacount = 199;
         var limit_place = true;
         var limit_teacher_grade = true;
         var limit_student_grade = true;
@@ -368,27 +487,56 @@
             197: { 0: "400", 1: "鄭老師", 2: "0", 3: "2", 4: "私立大學機械系", 5: "已教英文、數學兩年", 6: "數學 英文", 7: "國中", 8: "桃園", 9: "5", 10: "4", 11: "對讀書沒興趣", 12: "跟學生本身能力差不多" },
             198: { 0: "601", 1: "徐老師", 2: "1", 3: "3", 4: "國立大學不分系", 5: "數學三年", 6: "數學", 7: "高三", 8: "臺南", 9: "6", 10: "6", 11: "普通", 12: "跟學生本身能力差不多" }
         }
+        var dictionary = {
+            '學齡前': 1, '幼稚園': 1, '小學一年級': 1, '小學二年級': 2, '小學三年級': 3, '小學四年級': 4, '小學五年級': 5, '小學六年級': 6,
+            '國中一年級': 7, '國中二年級': 8, '國中三年級': 9, '高中一年級': 10, '高年二年級': 11, '高中三年級': 12, '大學': 12, '社會人士': 12,
+            '無': 0, '3個月': 0.25, '半年': 0.5, '一年': 1, '一年半': 1.5, '二年': 2, '三年': 3, '四年': 4, '五年': 5, '六年': 6, '七年以上': 7,
+            '新北': 0.78, '臺北': 1, '桃園': 0.84, '臺中': 0.78, '臺南': 0.66, '高雄': 0.74, '宜蘭': 0.65,
+            '新竹': 0.92, '苗栗': 0.63, '彰化': 0.6, '南投': 0.59, '雲林': 0.52, '嘉義': 0.57, '屏東': 0.6,
+            '臺東': 0.54, '花蓮': 0.57, '澎湖': 0.58, '基隆': 0.65, '新竹': 0.86, '嘉義': 0.7,
+            '學測': 12, '統測': 11, '不限制': -1, '國小': 3, '國中': 8, '高中': 11
+        };
+        function mode1_caculation(place, student, teacher) {
+            $("#result").val(Math.round(dictionary[place] * 403 + dictionary[student] * 25 + dictionary[teacher] * 47 - 49));
+        }
         function getRandomInt(min, max) {
             min = Math.ceil(min);
             max = Math.floor(max);
             return Math.floor(Math.random() * (max - min)) + min; //不含最大值，含最小值
         }
         function create_table(n) {
-            var str = "<table style=\"width:100%;\" border=\"1\">";
-            str += "<tr><td rowspan=\"6\">" + "時薪" + data[n][0] + "元</td><td rowspan=\"4\">" + data[n][1] + "<br />" + data[n][4] + "</td><td>個人資歷</td><td>教授科目</td><td>學生年級</td></tr>";
-            str += "<tr><td>" + data[n][5] + "</td><td>" + data[n][6] + "</td><td>" + data[n][7] + "</td></tr>";
-            str += "<tr><td>家教地區</td><td>交通狀況</td><td>上課時數</td></tr>";
-            str += "<tr><td>" + data[n][8] + "</td><td>" + data[n][9] + "(min)</td><td>" + data[n][10] + "(hr/week)</td></tr>";
-            str += "<tr><td>學生程度</td><td colspan=\"3\">" + data[n][11] + "</td></tr>";
-            str += "<tr><td>家長期待</td><td colspan=\"3\">" + data[n][12] + "</td></tr><br />";
-            return str;
+            if ($(window).width() > 800) {
+                var str = "<table style=\"width:100%;\" border=\"1\">";
+                str += "<tr><td rowspan=\"6\">" + "時薪" + data[n][0] + "元</td><td rowspan=\"4\">" + data[n][1] + "<br />" + data[n][4] + "</td><td>個人資歷</td><td>教授科目</td><td>學生年級</td></tr>";
+                str += "<tr><td>" + data[n][5] + "</td><td>" + data[n][6] + "</td><td>" + data[n][7] + "</td></tr>";
+                str += "<tr><td>家教地區</td><td>交通狀況</td><td>上課時數</td></tr>";
+                str += "<tr><td>" + data[n][8] + "</td><td>" + data[n][9] + "(min)</td><td>" + data[n][10] + "(hr/week)</td></tr>";
+                str += "<tr><td>學生程度</td><td colspan=\"3\">" + data[n][11] + "</td></tr>";
+                str += "<tr><td>家長期待</td><td colspan=\"3\">" + data[n][12] + "</td></tr><br />";
+                return str;
+            }
+            else {
+                var str = "<table style=\"width:100%;\" border=\"1\">";
+                str += "<tr><td>時薪</td><td>" + data[n][0] + "元</td></tr>";
+                str += "<tr><td>老師</td><td>" + data[n][1] + "</td></tr>";
+                str += "<tr><td>老師學歷</td><td>" + data[n][4] + "</td></tr>";
+                str += "<tr><td>個人資歷</td><td>" + data[n][5] + "</td></tr>";
+                str += "<tr><td>教授科目</td><td>" + data[n][6] + "</td></tr>";
+                str += "<tr><td>學生年級</td><td>" + data[n][7] + "</td></tr>";
+                str += "<tr><td>家教地區</td><td>" + data[n][8] + "</td></tr>";
+                str += "<tr><td>交通狀況</td><td>" + data[n][9] + "(min)</td></tr>";
+                str += "<tr><td>上課時數</td><td>" + data[n][10] + "(hr/week)</td></tr>";
+                str += "<tr><td>學生程度</td><td>" + data[n][11] + "</td></tr>";
+                str += "<tr><td>家長期待</td><td>" + data[n][12] + "</td></tr><br />";
+                return str;
+            }
         }
         function get_table(place, student_grade, teacher_grade, subject) {
-            var list = [199];
+            var list = [datacount];
             var i;
-            for (var i = 0; i < 199; i++)
+            for (var i = 0; i < datacount; i++)
                 list[i] = 1;
-            for (i = 0; i < 199; i++) {
+            for (i = 0; i < datacount; i++) {
                 if (data[i][8] != place && limit_place)
                     list[i] = 0;
                 else if (data[i][7].indexOf(convert_table_student_grade[student_grade]) < 0 && limit_student_grade)
@@ -408,11 +556,11 @@
             return list;
         }
         function special_get_table(place, student_grade, teacher_grade, subject) {
-            var list = [199];
+            var list = [datacount];
             var i;
-            for (var i = 0; i < 199; i++)
+            for (var i = 0; i < datacount; i++)
                 list[i] = 1;
-            for (i = 0; i < 199; i++) {
+            for (i = 0; i < datacount; i++) {
                 if (data[i][8] != place && limit_place)
                     list[i] = 0;
                 else if (data[i][7].indexOf(convert_table_student_grade_not_exist[convert_table_student_grade[student_grade]]) < 0 && limit_student_grade)
@@ -432,7 +580,7 @@
             return list;
         }
         function is_noResult(list) {
-            for (var i = 0; i < 199; i++)
+            for (var i = 0; i < datacount; i++)
                 if (list[i] == 1)
                     return false;
             return true;
@@ -440,18 +588,18 @@
         function print(list) {
             var str = "";
             var num = 0;
-            for (var i = 0; i < 199; i++)
+            for (var i = 0; i < datacount; i++)
                 if (list[i] == 1)
                     num++;
             if (num <= 5) {
-                for (var i = 0; i < 199; i++)
+                for (var i = 0; i < datacount; i++)
                     if (list[i] == 1)
                         str += create_table(i);
             }
             else {
                 var count = 0;
                 while (true) {
-                    var rnd = getRandomInt(0, 198);
+                    var rnd = getRandomInt(0, datacount - 1);
                     if (list[rnd] == 1) {
                         str += create_table(rnd);
                         count++;
@@ -468,6 +616,10 @@
                 ($("#student_grade").val() == "不限制") ? limit_student_grade = false : limit_student_grade = true;
                 ($("#teacher_grade").val() == "不限制") ? limit_teacher_grade = false : limit_teacher_grade = true;
                 ($("#subject").val() == "") ? limit_subject = false : limit_subject = true;
+                if (limit_place && limit_student_grade && limit_teacher_grade)
+                    mode1_caculation($("#place").val(), $("#student_grade").val(), $("#teacher_grade").val());
+                else
+                    $("#result").val("前三項條件有限制無法計算");
                 var list = get_table($("#place").val(), $("#student_grade").val(), $("#teacher_grade").val(), $("#subject").val()/*, $("#class_length").val(), $("#traffic_length").val()*/);
                 if (is_noResult(list)) {
                     document.getElementById("warming").innerHTML = "<p>因數據不足自動放寬限制 可同條件再次點擊以刷新</p>";
