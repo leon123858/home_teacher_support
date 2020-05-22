@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <script src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
     <!--<script src="//code.jquery.com/jquery-3.3.1.min.js"></script>-->
-    <title>learning</title>
+    <title>家教薪資小幫手</title>
     <style type="text/css">
         h1 {
             color: orange;
@@ -17,27 +17,28 @@
             color: red;
         }
         .buttum{
+            background-color:#feff85;
+            font-weight:bolder;
+            text-align:center;
             color:red;
             width:120px;height:40px;
             font-size:larger;
             font-family:Microsoft JhengHei;
         }
         .subject{
-            background-color:mediumpurple;
-            width:45%;
+            background-color:#ffffff;
+            width:75%;
             font-size:large;
         }
         .result{
-            color:gray;
+            background-color:white;
+            color:#cb4f01;
             font-size:larger;
             width:6%;
-        }
-        input{
-            background-color:yellow;
             text-align:center;
         }
         select{
-            background-color:mediumpurple;
+            background-color:#ffffff;
             width:40%;
             font-family:Microsoft JhengHei;
             font-size:large;
@@ -55,12 +56,26 @@
             background: #FFF;
         }
 
+        tr{
+            border:hidden;
+        }
+        td{
+             border:hidden;
+        }
+
         .container {
             margin: 0 auto;
             display: flex;
             flex-flow: row wrap;
         }
 
+        .tablec1{
+            background-color:#fea655;
+        }
+
+        .tablec2{
+            /*background-color:#ffffa9;*/
+        }
         .c1, .c2, .c3, .c4 {
             width: 100%;
             /*text-align:center;*/
@@ -97,6 +112,8 @@
             table{
                 width: 300px;
                 table-layout:fixed;
+                border-color:#cb4f01;
+                border-width:4px;
             }
             .result{
             font-size:large;
@@ -107,7 +124,7 @@
 </head>
 <body style="font-weight:bold;font-family:Microsoft JhengHei;">
     <h1>家教薪資小幫手<br /></h1>
-    <h4>選取符合個人狀況的選項以獲得家教鐘點費推算</h4>
+    <h4>請輸入符合個人狀況的條件</h4>
     <div class="container">
         <div class="c1">
             <span>家教地區</span><br />
@@ -239,7 +256,7 @@
         </div>
         <div class="c1">
             <span>教授科目</span><br />
-            <input id="subject" type="text" value="物化" class="subject" />
+            <input id="subject" type="text" placeholder="請任意輸入教學科目" class="subject" />
         </div>
         <br />
         <br />
@@ -248,15 +265,14 @@
     <br />
     <div class="c5">
         <div>
-            <input id="confirm" type="button" value="點此計算" class="buttum"/>
+            <input id="confirm" type="button" value="點此計算" class="buttum" />
         </div>
         <div>
-            <h3>你的家教鐘點費約為<input id="result" type="text" value="result" readonly="readonly" class="result"/>元</h3>
+            <h3 style="line-height: 0px;" id="dolar">你的家教鐘點費約為 <input id="result" type="text" value="result" readonly="readonly" class="result" /> 元</h3>
         </div>
         <br />
-        <div id="warming">
-        </div>
     </div>
+    <h3 id="hide_word" hidden="hidden" style="line-height: 0px;">以下為實際接案資料:</h3>
     <div id="output">
         <!--<table style="width:100%;" border="1">
             <tr><td rowspan="6">時薪</td><td rowspan="4">x老師 <br /> x大學 x 系</td><td>個人資歷</td><td>教授科目</td><td>學生年級</td></tr>
@@ -268,6 +284,7 @@
         </table>-->
     </div>
     <script>
+        var origin_dolar = "你的家教鐘點費約為 <input id=\"result\" type=\"text\" value=\"result\" readonly=\"readonly\" class=\"result\"/> 元";
         var datacount = 199;
         var limit_place = true;
         var limit_teacher_grade = true;
@@ -415,7 +432,7 @@
             125: { 0: "550", 1: "翟老師", 2: "1", 3: "2", 4: "國立大學工科系", 5: "二年", 6: "數學英文", 7: "國一", 8: "臺南", 9: "30", 10: "6", 11: "蠻差的，要花很多心思", 12: "希望能提升能力跟成績" },
             126: { 0: "800", 1: "邱老師", 2: "1", 3: "0.5", 4: "國立大學化工系", 5: "只有在補習班擔任國中數理解題老師(半年)", 6: "物理", 7: "高二", 8: "臺南", 9: "20", 10: "2.3", 11: "有很好的程度，很好教", 12: "希望可以教到學測，並且希望要教得懂" },
             127: { 0: "650", 1: "老師", 2: "1", 3: "0.25", 4: "國立大學醫學系", 5: "補習班解題老師", 6: "指考英文寫作", 7: "高三", 8: "高雄", 9: "20", 10: "3.5", 11: "普通", 12: "沒有特別的期待" },
-            128: { 0: "350", 1: "張老師", 2: "1", 3: "0", 4: "國立大學會計系", 5: "無家教經驗", 6: "會計 數學", 7: "大學", 8: "臺南", 9: "15", 10: "6", 11: "滿差的", 12: "有越來越進步" },
+            128: { 0: "350", 1: "張老師", 2: "1", 3: "0", 4: "國立大學會計系", 5: "無家教經驗", 6: "會計 數學", 7: "高中", 8: "臺南", 9: "15", 10: "6", 11: "滿差的", 12: "有越來越進步" },
             129: { 0: "600", 1: "老師", 2: "1", 3: "0", 4: "國立大學數學系", 5: "無家教經驗", 6: "數學", 7: "高中", 8: "臺中", 9: "10", 10: "3", 11: "普通", 12: "無" },
             130: { 0: "800", 1: "老師", 2: "1", 3: "3", 4: "國立大學數學系", 5: "已教過數學三年", 6: "數學", 7: "高中", 8: "臺北", 9: "20", 10: "2", 11: "普通", 12: "無" },
             131: { 0: "1000", 1: "鍾老師", 2: "1", 3: "1", 4: "國立大學電機系", 5: "已教過數學與英文", 6: "數學", 7: "國中", 8: "臺北", 9: "20", 10: "2", 11: "還可以，只是不太積極", 12: "再努力一下可以達到" },
@@ -476,7 +493,7 @@
             186: { 0: "750", 1: "張老師", 2: "1", 3: "0", 4: "國立大學化工系", 5: "無家教經驗", 6: "理化", 7: "國中", 8: "臺南", 9: "20", 10: "4", 11: "不專心，但程度尚可", 12: "沒有期待" },
             187: { 0: "550", 1: "李老師", 2: "1", 3: "1", 4: "國立大學機械系", 5: "補習班輔導老師一年", 6: "數學 物理", 7: "高中", 8: "高雄", 9: "5", 10: "3", 11: "很容易粗心，相同概念要強調3次以上才有辦法真的記住", 12: "希望能讓他在學校不要被當，學生能力許可的話成績越高越好，明白學生的實力在哪" },
             188: { 0: "700", 1: "郭老師", 2: "1", 3: "0", 4: "國立大學電機系", 5: "無家教經驗", 6: "學測數學 自然", 7: "高三", 8: "臺中", 9: "10", 10: "2", 11: "基本觀念懂，但會忘記重點", 12: "跟上私校進度" },
-            189: { 0: "759", 1: "李老師", 2: "0", 3: "2", 4: "私立大學運輸管理系", 5: "補習班數理兩年、家教數學一年半", 6: "學測化學", 7: "高三", 8: "臺北", 9: "15", 10: "3.5", 11: "自然組，程度大約前標，理解能力中等", 12: "佛系家長" },
+            189: { 0: "750", 1: "李老師", 2: "0", 3: "2", 4: "私立大學運輸管理系", 5: "補習班數理兩年、家教數學一年半", 6: "學測化學", 7: "高三", 8: "臺北", 9: "15", 10: "3.5", 11: "自然組，程度大約前標，理解能力中等", 12: "佛系家長" },
             190: { 0: "900", 1: "李老師", 2: "0", 3: "2", 4: "私立大學運輸管理系", 5: "補習班數學上台半年、數理兩年，數學家教一年", 6: "銜接數學", 7: "國一", 8: "臺北", 9: "2", 10: "5", 11: "蠻差的，對於觀念理解要下很大功夫", 12: "學生不是笨，是需要人督促（上家教前段考20分，上家教後段考80、88）" },
             191: { 0: "600", 1: "李老師", 2: "0", 3: "1", 4: "私立大學運輸管理系", 5: "補習班數理一年，數學上台半年", 6: "數學", 7: "國一", 8: "臺北", 9: "5", 10: "4", 11: "蠻差的，對於觀念理解要下很大功夫", 12: "鼓勵學生學習意願" },
             192: { 0: "450", 1: "萬老師", 2: "1", 3: "0", 4: "國立大學光電系", 5: "無家教經驗", 6: "數學", 7: "國中", 8: "臺南", 9: "15", 10: "2", 11: "普通", 12: "學生本質ok，但需更用功" },
@@ -485,7 +502,7 @@
             195: { 0: "800", 1: "郭老師", 2: "1", 3: "0", 4: "國立大學醫學系", 5: "無家教經驗", 6: "英文 數學 自然", 7: "國中", 8: "臺南", 9: "10", 10: "4", 11: "大致不錯", 12: "家長未明確說明，但會期待有進步" },
             196: { 0: "800", 1: "張老師", 2: "1", 3: "0.5", 4: "國立大學醫學系", 5: "補習班解題半年", 6: "數甲乙 物理 化學 生物", 7: "高三", 8: "高雄", 9: "15", 10: "4", 11: "雄中成績前段", 12: "考醫科" },
             197: { 0: "400", 1: "鄭老師", 2: "0", 3: "2", 4: "私立大學機械系", 5: "已教英文、數學兩年", 6: "數學 英文", 7: "國中", 8: "桃園", 9: "5", 10: "4", 11: "對讀書沒興趣", 12: "跟學生本身能力差不多" },
-            198: { 0: "601", 1: "徐老師", 2: "1", 3: "3", 4: "國立大學不分系", 5: "數學三年", 6: "數學", 7: "高三", 8: "臺南", 9: "6", 10: "6", 11: "普通", 12: "跟學生本身能力差不多" }
+            198: { 0: "650", 1: "徐老師", 2: "1", 3: "3", 4: "國立大學不分系", 5: "數學三年", 6: "數學", 7: "高三", 8: "臺南", 9: "6", 10: "6", 11: "普通", 12: "跟學生本身能力差不多" }
         }
         var dictionary = {
             '學齡前': 1, '幼稚園': 1, '小學一年級': 1, '小學二年級': 2, '小學三年級': 3, '小學四年級': 4, '小學五年級': 5, '小學六年級': 6,
@@ -497,7 +514,12 @@
             '學測': 12, '統測': 11, '不限制': -1, '國小': 3, '國中': 8, '高中': 11
         };
         function mode1_caculation(place, student, teacher) {
-            $("#result").val(Math.round(dictionary[place] * 403 + dictionary[student] * 25 + dictionary[teacher] * 47 - 49));
+            document.getElementById("dolar").innerHTML = origin_dolar;
+            var x = Math.round(dictionary[place] * 403 + dictionary[student] * 25 + dictionary[teacher] * 47 - 49);
+            if (x < 250) {
+                document.getElementById("dolar").innerHTML += "<br/><h6 line-height: 0px; style=\"color: #9D9D9D;\">(因數據不足, 可能偏離實際情況, 請參考以下實際接案資料)</h6>"
+            }
+            $("#result").val(x);
         }
         function getRandomInt(min, max) {
             min = Math.ceil(min);
@@ -507,27 +529,27 @@
         function create_table(n) {
             if ($(window).width() > 800) {
                 var str = "<table style=\"width:100%;\" border=\"1\">";
-                str += "<tr><td rowspan=\"6\">" + "時薪" + data[n][0] + "元</td><td rowspan=\"4\">" + data[n][1] + "<br />" + data[n][4] + "</td><td>個人資歷</td><td>教授科目</td><td>學生年級</td></tr>";
-                str += "<tr><td>" + data[n][5] + "</td><td>" + data[n][6] + "</td><td>" + data[n][7] + "</td></tr>";
-                str += "<tr><td>家教地區</td><td>交通狀況</td><td>上課時數</td></tr>";
+                str += "<tr><td rowspan=\"6\" style=\" border-right:solid 4px;border-right-color:#cb4f01; \">" + "時薪" + data[n][0] + "元</td><td class=\"tablec1\"  >" + "教師資料</td><td class=\"tablec1\">個人資歷</td><td class=\"tablec1\">教授科目</td><td class=\"tablec1\">學生年級</td></tr>";
+                str += "<tr><td class=\"tablec2\" rowspan=\"3\" style=\" border-right:solid 2px;border-right-color:#fea655; \">" + data[n][1] + "<br />" + data[n][4] + "</td><td>" + data[n][5] + "</td><td>" + data[n][6] + "</td><td>" + data[n][7] + "</td></tr>";
+                str += "<tr><td class=\"tablec1\">家教地區</td><td class=\"tablec1\">交通狀況</td><td class=\"tablec1\">上課時數</td></tr>";
                 str += "<tr><td>" + data[n][8] + "</td><td>" + data[n][9] + "(min)</td><td>" + data[n][10] + "(hr/week)</td></tr>";
-                str += "<tr><td>學生程度</td><td colspan=\"3\">" + data[n][11] + "</td></tr>";
-                str += "<tr><td>家長期待</td><td colspan=\"3\">" + data[n][12] + "</td></tr><br />";
+                str += "<tr><td class=\"tablec1\" style=\" border-top:solid 2px;border-top-color:#fea655; \">學生程度</td><td colspan=\"3\" style=\" border-top:solid 2px;border-top-color:#fea655; \">" + data[n][11] + "</td></tr>";
+                str += "<tr><td class=\"tablec1\" >家長期待</td><td colspan=\"3\" style=\" border-top:solid 2px;border-top-color:#fea655; \">" + data[n][12] + "</td></tr><br />";
                 return str;
             }
             else {
                 var str = "<table style=\"width:100%;\" border=\"1\">";
-                str += "<tr><td>時薪</td><td>" + data[n][0] + "元</td></tr>";
-                str += "<tr><td>老師</td><td>" + data[n][1] + "</td></tr>";
-                str += "<tr><td>老師學歷</td><td>" + data[n][4] + "</td></tr>";
-                str += "<tr><td>個人資歷</td><td>" + data[n][5] + "</td></tr>";
-                str += "<tr><td>教授科目</td><td>" + data[n][6] + "</td></tr>";
-                str += "<tr><td>學生年級</td><td>" + data[n][7] + "</td></tr>";
-                str += "<tr><td>家教地區</td><td>" + data[n][8] + "</td></tr>";
-                str += "<tr><td>交通狀況</td><td>" + data[n][9] + "(min)</td></tr>";
-                str += "<tr><td>上課時數</td><td>" + data[n][10] + "(hr/week)</td></tr>";
-                str += "<tr><td>學生程度</td><td>" + data[n][11] + "</td></tr>";
-                str += "<tr><td>家長期待</td><td>" + data[n][12] + "</td></tr><br />";
+                str += "<tr><td class=\"tablec1\">時薪</td><td>" + data[n][0] + "元</td></tr>";
+                str += "<tr><td class=\"tablec1\">老師</td><td>" + data[n][1] + "</td></tr>";
+                str += "<tr><td class=\"tablec1\">老師學歷</td><td>" + data[n][4] + "</td></tr>";
+                str += "<tr><td class=\"tablec1\">個人資歷</td><td>" + data[n][5] + "</td></tr>";
+                str += "<tr><td class=\"tablec1\">教授科目</td><td>" + data[n][6] + "</td></tr>";
+                str += "<tr><td class=\"tablec1\">學生年級</td><td>" + data[n][7] + "</td></tr>";
+                str += "<tr><td class=\"tablec1\">家教地區</td><td>" + data[n][8] + "</td></tr>";
+                str += "<tr><td class=\"tablec1\">交通狀況</td><td>" + data[n][9] + "(min)</td></tr>";
+                str += "<tr><td class=\"tablec1\">上課時數</td><td>" + data[n][10] + "(hr/week)</td></tr>";
+                str += "<tr><td class=\"tablec1\">學生程度</td><td>" + data[n][11] + "</td></tr>";
+                str += "<tr><td class=\"tablec1\">家長期待</td><td>" + data[n][12] + "</td></tr><br />";
                 return str;
             }
         }
@@ -586,6 +608,7 @@
             return true;
         }
         function print(list) {
+            $("#hide_word").show();
             var str = "";
             var num = 0;
             for (var i = 0; i < datacount; i++)
@@ -618,11 +641,12 @@
                 ($("#subject").val() == "") ? limit_subject = false : limit_subject = true;
                 if (limit_place && limit_student_grade && limit_teacher_grade)
                     mode1_caculation($("#place").val(), $("#student_grade").val(), $("#teacher_grade").val());
-                else
-                    $("#result").val("前三項條件有限制無法計算");
+                else {
+                    $("#result").val("無法計算");
+                }
                 var list = get_table($("#place").val(), $("#student_grade").val(), $("#teacher_grade").val(), $("#subject").val()/*, $("#class_length").val(), $("#traffic_length").val()*/);
                 if (is_noResult(list)) {
-                    document.getElementById("warming").innerHTML = "<p>因數據不足自動放寬限制 可同條件再次點擊以刷新</p>";
+                    document.getElementById("hide_word").innerHTML = "以下為實際接案資料:<br/><h6 line-height: 0px; style=\"color: #9D9D9D;\">(因數據不足自動放寬限制 可同條件再次點擊以刷新)</h6>"
                     var round = -1;
                     while (true) {
                         switch (round) {
