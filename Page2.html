@@ -511,7 +511,7 @@
             document.getElementById("dolar").innerHTML = origin_dolar;
             var x = Math.round(dictionary[place] * 403 + dictionary[student] * 25 + dictionary[teacher] * 47 - 49);
             if (x < 250) {
-                document.getElementById("dolar").innerHTML += "<br/><h6 line-height: 0px; style=\"color: #9D9D9D;\">(因數據不足, 可能偏離實際情況, 請參考以下實際接案資料)</h6>"
+                document.getElementById("dolar").innerHTML += "<br/><h6 line-height: 0px; style=\"color: #9D9D9D;\">(因數據不足, 可能偏離實際情況, 請參考以下實際接案資料)<br/></h6>"
             }
             $("#result").val(x);
         }
